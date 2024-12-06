@@ -5,15 +5,10 @@ function Footer() {
   return (
     
 
-<footer class="bg-white dark:bg-gray-900">
-    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0">
-              <Link to='/'>
-                  <h1 class="mb-4 text-2xl md:text-3xl font-extrabold hidden md:block tracking-tight leading-none text-gray-900 lg:4xl dark:text-white">Free Book Archive</h1>
-                  </Link>
-          </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+<footer class="bg-white dark:bg-gray-900 md:mt-10 mt-6">
+    <div class="w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-center">
+          <div class="grid grid-cols-2 gap-8  sm:gap-6 sm:grid-cols-3">
               <div>
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">

@@ -3,13 +3,21 @@ import axios from 'axios';
 
 function BooksCard({ path }) {
     const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
 
     useEffect(() => {
+        setLoading(true); // Start loading
         axios
             .get(`http://localhost:1337/api/${path}?populate=*`)
-            .then((response) => setBooks(response.data.data))
-            .catch((err) => console.log(err));
-    }, []);
+            .then((response) => {
+                setBooks(response.data.data);
+                setLoading(false); // Stop loading after data is fetched
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false); // Stop loading on error
+            });
+    }, [path]);
 
     const getDescriptionText = (description) => {
         if (!description) return '';
@@ -23,18 +31,22 @@ function BooksCard({ path }) {
     };
 
     return (
-        <div className="flex flex-wrap w-full gap-2">
-            {books.length === 0 ? (
-                <div className='w-full text-center'>
-                <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-300">
-                    No Books Available!
-                </h5>
+        <div className="flex flex-wrap w-full gap-2 ml-2">
+            {loading ? (
+                <div className="w-full flex items-center justify-center">
+                    <img src="imgs/aeroplane loading.gif" alt="Loading..." className='h-[5rem]'/>
+                </div>
+            ) : books.length === 0 ? (
+                <div className="w-full text-center">
+                    <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-300">
+                        No Books Available!
+                    </h5>
                 </div>
             ) : (
                 books.map((book) => (
                     <div
                         key={book.id}
-                        className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-4"
+                        className="max-w-sm bg-white border border-gray-200 rounded-lg md:hover:scale-105 hover:transition-all hover:scale-[1.02] hover:shadow-xl shadow dark:bg-gray-800 dark:border-gray-700 m-2"
                     >
                         <div className="p-5">
                             <a href="#">

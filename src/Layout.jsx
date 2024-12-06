@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 function Layout() {
   return (
     <>
-    <div className='w-full flex md:flex-row flex-col '>
+    <div className='w-full flex md:flex-row flex-col overflow-x-hidden'>
         <Sidebar/>
         <Outlet/>
     </div>

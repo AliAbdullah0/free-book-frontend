@@ -4,10 +4,10 @@ import { Link } from 'react-router'
 function Category({link,title,description}) {
     
     return (
-                    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="sm:w-1/4 w-full p-4 bg-white border border-gray-200 rounded-lg hover:transition-all hover:shadow-xl hover:scale-[1.02] md:hover:scale-105 shadow dark:bg-gray-800 dark:border-gray-700">
 
                         <Link to={link}>
-                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+                            <h5 class="mb-2 sm:text-2xl text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{title}</h5>
                         </Link >
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{description}</p>
                         <Link to={link} class="inline-flex font-medium items-center text-blue-600 hover:underline">
