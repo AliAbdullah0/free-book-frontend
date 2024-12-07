@@ -6,16 +6,17 @@ function BooksCard({ path }) {
     const [loading, setLoading] = useState(true); // Add loading state
 
     useEffect(() => {
-        setLoading(true); // Start loading
+        setLoading(true);
         axios
             .get(`${import.meta.env.VITE_API_URL}/${path}?populate=*`)
             .then((response) => {
                 setBooks(response.data.data);
-                setLoading(false); // Stop loading after data is fetched
+                setLoading(false);
+                console.log(import.meta.env.VITE_API_URL)
             })
             .catch((err) => {
                 console.log(err);
-                setLoading(false); // Stop loading on error
+                setLoading(false); 
             });
     }, [path]);
 
@@ -60,7 +61,7 @@ function BooksCard({ path }) {
                             </p>
                             {book.PDFfile && (
                                 <a
-                                    href={`http://localhost:1337${book.PDFfile.url}`}
+                                    href={`${import.meta.env.VITE_API_URL}${book.PDFfile.url}`}
                                     download
                                     target="_blank"
                                     rel="noopener noreferrer"
