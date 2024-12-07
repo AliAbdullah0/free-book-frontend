@@ -4,7 +4,7 @@ import BooksCard from './BooksCard'
 
 function CSSBooks() {
   return (
-    <div className='min-w-[75%] overflow-auto min-h-screen'>
+    <div className='min-w-[75%] overflow-x-hidden min-h-screen'>
       <PageHeading title={'Cascading Style Sheets (CSS)'}/>
       <BooksCard path={'css-books'}/>
     </div>
