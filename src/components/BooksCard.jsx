@@ -8,7 +8,7 @@ function BooksCard({ path }) {
     useEffect(() => {
         setLoading(true); // Start loading
         axios
-            .get(`http://localhost:1337/api/${path}?populate=*`)
+            .get(`${import.meta.env.VITE_API_URL}/${path}?populate=*`)
             .then((response) => {
                 setBooks(response.data.data);
                 setLoading(false); // Stop loading after data is fetched
