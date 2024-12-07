@@ -16,7 +16,7 @@ function BooksCard({ path }) {
             })
             .catch((err) => {
                 console.log(err);
-                setLoading(false); 
+                setLoading(false);
             });
     }, [path]);
 
@@ -35,7 +35,7 @@ function BooksCard({ path }) {
         <div className="flex flex-wrap w-full gap-2 ml-2">
             {loading ? (
                 <div className="w-full flex items-center justify-center">
-                    <img src="imgs/aeroplane loading.gif" alt="Loading..." className='h-[5rem]'/>
+                    <img src="imgs/aeroplane loading.gif" alt="Loading..." className='h-[5rem]' />
                 </div>
             ) : books.length === 0 ? (
                 <div className="w-full text-center">
@@ -60,11 +60,15 @@ function BooksCard({ path }) {
                                     'No description available'}
                             </p>
                             {book.PDFfile && (
-                                <a
-                                    href={`${import.meta.env.VITE_API_URL}${book.PDFfile.url}`}
-                                    download
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <button
+                                    onClick={() => {
+                                        const link = document.createElement('a');
+                                        link.href = `${import.meta.env.VITE_API_URL}${book.PDFfile.url}`;
+                                        link.download = `${book.PDFfile.name || 'download.pdf'}`; // optional: name the file
+                                        document.body.appendChild(link);
+                                        link.click();
+                                        document.body.removeChild(link);
+                                    }}
                                     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 >
                                     Download PDF
@@ -83,8 +87,9 @@ function BooksCard({ path }) {
                                             d="M1 5h12m0 0L9 1m4 4L9 9"
                                         />
                                     </svg>
-                                </a>
+                                </button>
                             )}
+
                         </div>
                     </div>
                 ))
