@@ -32,7 +32,7 @@ function BooksCard({ path }) {
     };
 
     return (
-        <div className="flex flex-wrap w-full gap-2 ml-2">
+        <div className="flex flex-wrap w-full gap-2 ml-2 mt-15 md:mt-3">
             {loading ? (
                 <div className="w-full flex items-center justify-center">
                     <img src="imgs/aeroplane loading.gif" alt="Loading..." className='h-[5rem]' />
@@ -51,7 +51,7 @@ function BooksCard({ path }) {
                     >
                         <div className="p-5">
                             <a href="#">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <h5 className="mb-2 md:text-2xl text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     {book.title}
                                 </h5>
                             </a>
@@ -63,7 +63,9 @@ function BooksCard({ path }) {
                                 <button
                                     onClick={() => {
                                         const link = document.createElement('a');
-                                        link.href = `${import.meta.env.VITE_API_URL}${book.PDFfile.url}`;
+                                        link.href = `${book.PDFfile.url}`;
+                                        console.log(book.PDFfile)
+                                        
                                         link.download = `${book.PDFfile.name || 'download.pdf'}`; // optional: name the file
                                         document.body.appendChild(link);
                                         link.click();

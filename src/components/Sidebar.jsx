@@ -19,11 +19,11 @@ function Sidebar() {
   ];
 
   return (
-    <div className="flex flex-col md:min-w-[15%] max-w-[23%] w-full h-full bg-gray-900 text-neutral-200">
+    <div className="flex flex-col md:min-w-[15%] max-w-[23%] w-full h-full dark:bg-gray-900 dark:text-neutral-200">
       {/* Desktop Sidebar */}
-      <div className="hidden h-screen md:flex flex-col gap-4 p-6 bg-gray-900 border-r border-gray-700">
+      <div className="hidden h-screen md:flex flex-col gap-4 p-6 dark:bg-gray-900 border-r dark:border-gray-700 border-none">
         <Link to="/">
-          <h1 className="mb-6 text-3xl font-extrabold tracking-tight text-white">
+          <h1 className="mb-6 text-3xl font-extrabold tracking-tight dark:text-white">
             Free Book Archive
           </h1>
         </Link>
@@ -32,7 +32,7 @@ function Sidebar() {
             <Link
               key={category.to}
               to={category.to}
-              className="py-2 px-4 text-gray-300 rounded hover:bg-gray-700 hover:text-white transition-colors"
+              className="py-2 px-4 dark:text-gray-300 text-gray-900 rounded hover:bg-blue-600 hover:text-white transition-colors"
             >
               {category.title}
             </Link>

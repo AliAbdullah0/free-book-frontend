@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 
 function Home() {
     return (
-        <div className='md:min-w-[75%] mt-14 md:mt-2 bg-gray-900 w-full flex flex-col '>
+        <div className='md:min-w-[75%] mt-14 md:mt-2 dark:bg-gray-900 w-full flex flex-col '>
             <div className='w-full flex h-1/2  items-center justify-center p-2'>
                 <section class="bg-white dark:bg-gray-900">
                     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">

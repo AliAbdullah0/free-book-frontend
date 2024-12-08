@@ -4,7 +4,7 @@ import BooksCard from './BooksCard'
 
 function DBBooks() {
   return (
-    <div className='min-w-[75%] min-h-screen overflow-x-hidden'>
+    <div className='min-w-[75%] min-h-screen flex items-center flex-col overflow-x-hidden'>
       <PageHeading title={'Databases'}/>
       <BooksCard path={'database-books'}/>
     </div>
