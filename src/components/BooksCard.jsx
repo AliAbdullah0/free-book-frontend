@@ -82,8 +82,8 @@ function BooksCard({ path }) {
                             {book.PDFfile && (
                                 <div className="flex space-x-4">
                                     <button
-                                        onClick={() => downloadFile(book.PDFfile.url, 'book.pdf', book.id)}
-                                        className="btn-download bg-blue-600 p-2 font-semibold focus:bg-blue-700 focus:transition-all focus:ring-2 focus:ring-blue-700 rounded-md text-white"
+                                        onClick={() => downloadFile(book.PDFfile.url, `${book.title}.pdf`, book.id)}
+                                        className="btn-download bg-blue-600 p-2 font-semibold focus:bg-blue-700 focus:transition-all rounded-md text-white"
                                     >
                                         {downloading === book.id ? (
                                             <img
