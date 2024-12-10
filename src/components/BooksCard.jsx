@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 function BooksCard({ path }) {
     const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
+    const [downloading, setDownloading] = useState(null);
+
 
     useEffect(() => {
         setLoading(true);
@@ -21,7 +23,8 @@ function BooksCard({ path }) {
             });
     }, [path]);
 
-    const downloadFile = (url, filename) => {
+    const downloadFile = (url, filename, bookId) => {
+        setDownloading(bookId); // Set which book is downloading
         axios.get(url, { responseType: 'blob' })
             .then((response) => {
                 const blob = new Blob([response.data], { type: 'application/pdf' });
@@ -32,9 +35,11 @@ function BooksCard({ path }) {
                 link.click();
                 document.body.removeChild(link);
             })
-            .catch((err) => console.log('Error downloading file', err));
+            .catch((err) => console.log('Error downloading file', err))
+            .finally(() => setDownloading(null)); // Reset downloading state
     };
-    
+
+
     const getDescriptionText = (description) => {
         if (!description) return '';
         return description
@@ -77,27 +82,19 @@ function BooksCard({ path }) {
                             {book.PDFfile && (
                                 <div className="flex space-x-4">
                                     <button
-                                       onClick={() => downloadFile(book.PDFfile.url, 'book.pdf')} 
-                                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        onClick={() => downloadFile(book.PDFfile.url, 'book.pdf', book.id)}
+                                        className="btn-download bg-blue-600 p-2 font-semibold focus:bg-blue-700 focus:transition-all focus:ring-2 focus:ring-blue-700 rounded-md text-white"
                                     >
-                                        Download PDF
-                                        <svg
-                                            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                                            aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 14 10"
-                                        >
-                                            <path
-                                                stroke="currentColor"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M1 5h12m0 0L9 1m4 4L9 9"
+                                        {downloading === book.id ? (
+                                            <img
+                                                src="/imgs/public\imgs\Animation - 1732196348627.gif.gif"
+                                                alt="Loading..."
+                                                className="w-5 h-5 inline-block"
                                             />
-                                        </svg>
+                                        ) : (
+                                            'Download PDF'
+                                        )}
                                     </button>
-                        
                                 </div>
                             )}
                         </div>
