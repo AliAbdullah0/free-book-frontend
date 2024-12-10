@@ -87,9 +87,9 @@ function BooksCard({ path }) {
                                     >
                                         {downloading === book.id ? (
                                             <img
-                                                src="/imgs/public\imgs\Animation - 1732196348627.gif.gif"
+                                                src="imgs/Animation - 1732196348627.gif"
                                                 alt="Loading..."
-                                                className="w-5 h-5 inline-block"
+                                                className="w-full inline-block"
                                             />
                                         ) : (
                                             'Download PDF'
