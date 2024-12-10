@@ -89,7 +89,7 @@ function BooksCard({ path }) {
                                             <img
                                                 src="imgs/Animation - 1732196348627.gif"
                                                 alt="Loading..."
-                                                className="w-full inline-block"
+                                                className="w-10 inline-block"
                                             />
                                         ) : (
                                             'Download PDF'
