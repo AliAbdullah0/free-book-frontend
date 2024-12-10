@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf';
+import { Link } from 'react-router';
 
 function PDFViewer({ fileUrl }) {
   const [error, setError] = useState(false); // Track PDF loading error
@@ -48,12 +49,12 @@ function PDFViewer({ fileUrl }) {
               <path d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0 6 6h2a8 8 0 0 1-8 8v-2a6 6 0 0 0-6-6H4a8 8 0 0 1 8-8z" fill="currentColor"></path>
             </svg>
           </div>
-          <button
-            onClick={() => window.location.reload()}
+          <Link
+            to='/'
             className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition-all"
           >
             Reload Page
-          </button>
+          </Link>
         </div>
       ) : (
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-screen-lg w-full">
