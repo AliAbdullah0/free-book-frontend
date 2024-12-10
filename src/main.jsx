@@ -14,6 +14,7 @@ import DBBooks from './components/DBBooks.jsx';
 import HTMLBooks from './components/HTMLBooks.jsx';
 import PerlBooks from './components/PerlBooks.jsx';
 import NotFound from './components/NotFound.jsx'
+import PDFViewer from './components/PDFViewer.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='dbbooks' element={<DBBooks/>} />
           <Route path='htmlbooks' element={<HTMLBooks/>} />
           <Route path='perlbooks' element={<PerlBooks/>} />
+          <Route path="pdf-viewer" element={<PDFViewer/>} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
