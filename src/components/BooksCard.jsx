@@ -53,9 +53,9 @@ function BooksCard({ path }) {
     };
 
     return (
-        <div className="flex flex-wrap w-full gap-2 ml-2 mt-15 md:mt-3">
+        <div className="flex flex-wrap w-full gap-1 ml-2 mt-15 md:mt-2">
             {loading ? (
-                <div className="w-full flex items-center justify-center">
+                <div className="w-full flex p-2 items-center justify-center">
                     {/* <img src="imgs/Animation - 1732196348627.gif" alt="Loading..." className='h-[5rem]' /> */}
                     <LoadingBar/>
                 </div>
@@ -69,7 +69,7 @@ function BooksCard({ path }) {
                 books.map((book) => (
                     <div
                         key={book.id}
-                        className="max-w-sm bg-white border border-gray-200 rounded-lg md:hover:scale-105 hover:transition-all hover:scale-[1.02] hover:shadow-xl shadow dark:bg-gray-800 dark:border-gray-700 m-2"
+                        className="sm:max-w-[22rem] w-full bg-white border border-gray-200 rounded-lg md:hover:scale-105 hover:transition-all hover:scale-[1.02] hover:shadow-xl shadow dark:bg-gray-800 dark:border-gray-700 m-2"
                     >
                         <div className="p-5">
                             <a href="#">
