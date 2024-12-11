@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import LoadingBar from './LoadingBar';
 
 function BooksCard({ path }) {
     const [books, setBooks] = useState([]);
@@ -24,7 +25,7 @@ function BooksCard({ path }) {
     }, [path]);
 
     const downloadFile = (url, filename, bookId) => {
-        setDownloading(bookId); // Set which book is downloading
+        setDownloading(bookId);
         axios.get(url, { responseType: 'blob' })
             .then((response) => {
                 const blob = new Blob([response.data], { type: 'application/pdf' });
@@ -36,7 +37,7 @@ function BooksCard({ path }) {
                 document.body.removeChild(link);
             })
             .catch((err) => console.log('Error downloading file', err))
-            .finally(() => setDownloading(null)); // Reset downloading state
+            .finally(() => setDownloading(null)); 
     };
 
 
@@ -55,7 +56,8 @@ function BooksCard({ path }) {
         <div className="flex flex-wrap w-full gap-2 ml-2 mt-15 md:mt-3">
             {loading ? (
                 <div className="w-full flex items-center justify-center">
-                    <img src="imgs/aeroplane loading.gif" alt="Loading..." className='h-[5rem]' />
+                    {/* <img src="imgs/Animation - 1732196348627.gif" alt="Loading..." className='h-[5rem]' /> */}
+                    <LoadingBar/>
                 </div>
             ) : books.length === 0 ? (
                 <div className="w-full text-center">

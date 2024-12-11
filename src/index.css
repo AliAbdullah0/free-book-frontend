@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes loading-bar {
+    0% {
+      width: 0%;
+      left: 0%;
+    }
+    50% {
+      width: 100%;
+      left: 0%;
+    }
+    100% {
+      width: 0%;
+      left: 100%;
+    }
+  }
+  
+  .infinite-bar {
+    animation: loading-bar 3s infinite;
+    height: 4px;
+    background-color: #4b6cb7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+  }
+  

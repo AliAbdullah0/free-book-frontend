@@ -12,7 +12,6 @@ function Sidebar() {
     setDropdown(false);
   };
 
-  // Close the dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".mobile-nav-container") && !event.target.closest(".menu-button")) {
@@ -31,6 +30,7 @@ function Sidebar() {
 
   const categories = [
     { to: '/', title: 'Home' },
+    { to: 'allbooks', title: 'All' },
     { to: 'htmlbooks', title: 'HTML' },
     { to: 'cssbooks', title: 'CSS' },
     { to: 'jsbooks', title: 'JavaScript' },
@@ -42,7 +42,7 @@ function Sidebar() {
   return (
     <div className="flex flex-col md:min-w-[15%] max-w-[23%] w-full h-full dark:bg-gray-900 dark:text-neutral-200">
       {/* Desktop Sidebar */}
-      <div className="hidden h-screen md:flex flex-col gap-4 p-6 dark:bg-gray-900 border-r dark:border-gray-700">
+      <div className="hidden h-screen md:flex flex-col gap-4 p-6 dark:bg-gray-900 ">
         <Link to="/">
           <h1 className="mb-6 text-3xl font-extrabold tracking-tight dark:text-white">
             Free Book Archive
